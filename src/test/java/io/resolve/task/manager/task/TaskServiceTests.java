@@ -128,6 +128,14 @@ public class TaskServiceTests {
         Assertions.assertEquals("Second task", userTasks.get(1).getTitle());
     }
 
+    @Test
+    void findAllTaskStatuses_valuesFromEnum() {
+        List<StatusTypeEnum> statuses = this.taskService.findAllTaskStatuses();
+
+        Assertions.assertNotNull(statuses);
+        Assertions.assertEquals(3, statuses.size());
+    }
+
 
     private TaskEntity createTaskEntity() {
         return new TaskEntity(ID, TITLE, DESCRIPTION, DUE_DATE, IN_PROGRESS, null, null);

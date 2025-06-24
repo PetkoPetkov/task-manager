@@ -17,4 +17,5 @@ public interface TaskService {
 
     List<TaskEntity> findByUserId(Long userId);
 
+    List<StatusTypeEnum> findAllTaskStatuses();
 }

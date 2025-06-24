@@ -2,6 +2,7 @@ package io.resolve.task.manager.task.controller;
 
 import io.resolve.task.manager.task.TaskDto;
 import io.resolve.task.manager.task.mapper.TaskMapper;
+import io.resolve.task.manager.task.model.StatusTypeEnum;
 import io.resolve.task.manager.task.model.TaskEntity;
 import io.resolve.task.manager.task.service.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -77,4 +78,13 @@ public class TaskController {
                         .collect(Collectors.toList()));
     }
 
+    @GetMapping("/statuses")
+    @ResponseBody
+    public ResponseEntity<List<String>> findAllTaskStatuses() {
+        return ResponseEntity.status(HttpStatus.OK)
+                .body(this.taskService.findAllTaskStatuses()
+                        .stream()
+                        .map(StatusTypeEnum::name)
+                        .collect(Collectors.toList()));
+    }
 }

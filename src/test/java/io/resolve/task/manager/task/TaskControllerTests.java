@@ -130,5 +130,15 @@ public class TaskControllerTests {
                 .andExpect(jsonPath("$[0].userId").value(userId));
     }
 
+    @Test
+    void findAllTaskStatuses_valuesFromEnum() throws Exception {
+
+        mockMvc.perform(get(PATH + "/statuses")
+                .contentType(MediaType.APPLICATION_JSON))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$").isNotEmpty());
+    }
+
 
 }
