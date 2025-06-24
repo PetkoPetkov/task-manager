@@ -1,13 +1,10 @@
 package io.resolve.task.manager.task.model;
 
-import io.resolve.task.manager.user.model.UserEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -21,7 +18,7 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "T_TASK", schema = "RESOLVEDB")
+@Table(name = "T_TASK")
 public class TaskEntity {
 
     @Id

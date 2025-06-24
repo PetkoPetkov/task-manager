@@ -1,4 +1,4 @@
-CREATE TABLE IF NOT EXISTS RESOLVEDB.T_TASK
+CREATE TABLE IF NOT EXISTS T_TASK
 (
     id          BIGINT AUTO_INCREMENT PRIMARY KEY NOT NULL,
     title       VARCHAR(250)                      NOT NULL,
@@ -7,6 +7,6 @@ CREATE TABLE IF NOT EXISTS RESOLVEDB.T_TASK
     status      VARCHAR(20)                       NOT NULL,
     user_id     BIGINT                            NULL,
     depends_on  BIGINT                            NULL,
-    FOREIGN KEY (user_id) REFERENCES RESOLVEDB.T_USER (id),
-    FOREIGN KEY (depends_on) REFERENCES RESOLVEDB.T_TASK (id)
+    FOREIGN KEY (user_id) REFERENCES T_USER (id),
+    FOREIGN KEY (depends_on) REFERENCES T_TASK (id)
 );

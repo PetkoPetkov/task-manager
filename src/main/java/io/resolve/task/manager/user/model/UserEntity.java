@@ -20,7 +20,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "T_USER", schema = "RESOLVEDB")
+@Table(name = "T_USER")
 public class UserEntity {
 
     @Id
