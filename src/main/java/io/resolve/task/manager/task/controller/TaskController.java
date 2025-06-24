@@ -35,7 +35,7 @@ public class TaskController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<TaskDto> create(@RequestBody TaskDto dto) {
+    public ResponseEntity<TaskDto> createTask(@RequestBody TaskDto dto) {
 
         TaskEntity taskEntity = this.taskService.create(this.taskMapper.fromDto(dto));
 
@@ -44,7 +44,7 @@ public class TaskController {
 
     @GetMapping
     @ResponseBody
-    public ResponseEntity<List<TaskDto>> findAll() {
+    public ResponseEntity<List<TaskDto>> getAllTasks() {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(this.taskService.findAll()
                         .stream()
@@ -54,14 +54,14 @@ public class TaskController {
 
     @GetMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<TaskDto> findById(@PathVariable Long id) {
+    public ResponseEntity<TaskDto> getTaskById(@PathVariable Long id) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(this.taskMapper.toDto(this.taskService.findById(id)));
     }
 
     @PutMapping("/{id}")
     @ResponseBody
-    public ResponseEntity<String> updateStatusOrAssignee(@PathVariable Long id, @RequestBody TaskDto dto) {
+    public ResponseEntity<String> updateTaskStatusOrAssignee(@PathVariable Long id, @RequestBody TaskDto dto) {
         TaskEntity taskEntity = this.taskMapper.fromDto(dto);
         this.taskService.update(id, taskEntity.getStatus(), taskEntity.getUserId());
 
@@ -70,7 +70,7 @@ public class TaskController {
 
     @GetMapping("/user/{userId}")
     @ResponseBody
-    public ResponseEntity<List<TaskDto>> findAllByUserId(@PathVariable Long userId) {
+    public ResponseEntity<List<TaskDto>> getAllTasksByUserId(@PathVariable Long userId) {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(this.taskService.findByUserId(userId)
                         .stream()
@@ -80,7 +80,7 @@ public class TaskController {
 
     @GetMapping("/statuses")
     @ResponseBody
-    public ResponseEntity<List<String>> findAllTaskStatuses() {
+    public ResponseEntity<List<String>> getAllTaskStatuses() {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(this.taskService.findAllTaskStatuses()
                         .stream()

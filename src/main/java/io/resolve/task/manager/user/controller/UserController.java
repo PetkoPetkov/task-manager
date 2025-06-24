@@ -34,7 +34,7 @@ public class UserController {
 
     @PostMapping
     @ResponseBody
-    public ResponseEntity<UserDto> create(@RequestBody UserDto dto) {
+    public ResponseEntity<UserDto> createUser(@RequestBody UserDto dto) {
 
         UserEntity userEntity = this.userService.create(this.userMapper.fromDto(dto));
 
@@ -43,7 +43,7 @@ public class UserController {
 
     @PutMapping
     @ResponseBody
-    public ResponseEntity<String> update(@RequestBody UserDto dto) {
+    public ResponseEntity<String> updateUser(@RequestBody UserDto dto) {
 
         this.userService.update(this.userMapper.fromDto(dto));
 
@@ -52,7 +52,7 @@ public class UserController {
 
     @GetMapping
     @ResponseBody
-    public ResponseEntity<List<UserDto>> findAll() {
+    public ResponseEntity<List<UserDto>> getAllUsers() {
         return ResponseEntity.status(HttpStatus.OK)
                 .body(this.userService.findAll()
                         .stream()
